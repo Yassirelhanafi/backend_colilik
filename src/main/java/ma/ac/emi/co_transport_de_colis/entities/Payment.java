@@ -18,10 +18,10 @@ public class Payment {
     private User driver;
 
     private double amount;
-    private PaymentStrategy paymentStrategy;
+    private RechargeStrategy paymentStrategy;
     private LocalDateTime timestamp;
 
-    public Payment(Order order, User customer, User driver, double amount, PaymentStrategy paymentStrategy, LocalDateTime timestamp) {
+    public Payment(Order order, User customer, User driver, double amount, RechargeStrategy paymentStrategy, LocalDateTime timestamp) {
         this.setOrder(order);
         this.setCustomer(customer);
         this.setDriver(driver);
@@ -73,11 +73,11 @@ public class Payment {
         this.amount = amount;
     }
 
-    public PaymentStrategy getPaymentStrategy() {
+    public RechargeStrategy getPaymentStrategy() {
         return paymentStrategy;
     }
 
-    public void setPaymentStrategy(PaymentStrategy paymentStrategy) {
+    public void setPaymentStrategy(RechargeStrategy paymentStrategy) {
         this.paymentStrategy = paymentStrategy;
     }
 

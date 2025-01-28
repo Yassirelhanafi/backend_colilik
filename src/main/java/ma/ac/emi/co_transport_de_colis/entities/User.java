@@ -1,9 +1,12 @@
 package ma.ac.emi.co_transport_de_colis.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,12 +17,18 @@ public class User extends Account {
     private String imageProfil;
     private String imageCIN;
     private double walletBalance;
+    private LocalDateTime pickUpTime;
     private int totalOrders;
     private int totalDeliveries;
     private double LongDest;
     private double latDest;
     private double LongDepart;
     private double latDepart;
+    private boolean isDriver = false;
+    private LocalDateTime deliveryTime;
+    @JsonBackReference
+    @DBRef
+    private List<Order> orders = new ArrayList<>();
 
     @DBRef
     private List<Announcement> announcements= new ArrayList<>();
@@ -135,5 +144,37 @@ public class User extends Account {
 
     public void setImageProfil(String imageProfil) {
         this.imageProfil = imageProfil;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
+
+    public boolean isDriver() {
+        return isDriver;
+    }
+
+    public void setDriver(boolean driver) {
+        isDriver = driver;
+    }
+
+    public LocalDateTime getPickUpTime() {
+        return pickUpTime;
+    }
+
+    public LocalDateTime getDeliveryTime() {
+        return deliveryTime;
+    }
+
+    public void setPickUpTime(LocalDateTime pickUpTime) {
+        this.pickUpTime = pickUpTime;
+    }
+
+    public void setDeliveryTime(LocalDateTime deliveryTime) {
+        this.deliveryTime = deliveryTime;
     }
 }

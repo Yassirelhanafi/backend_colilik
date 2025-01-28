@@ -1,21 +1,15 @@
 package ma.ac.emi.co_transport_de_colis.entities;
 
-public class StripePayment implements PaymentStrategy {
+import jakarta.validation.constraints.NotNull;
 
+public class PaymentRequest {
+    @NotNull
     private Long amount;
+    @NotNull
     private String currency;
-    @Override
-    public void executePayment(double amount) {
 
-    }
-
-    public StripePayment(Long amount, String currency) {
-        this.amount = amount;
-        this.currency = currency;
-    }
-
-    public StripePayment() {
-    }
+    @NotNull
+    private String id_user;
 
     public Long getAmount() {
         return amount;
@@ -31,5 +25,13 @@ public class StripePayment implements PaymentStrategy {
 
     public void setCurrency(String currency) {
         this.currency = currency;
+    }
+
+    public String getId_user() {
+        return id_user;
+    }
+
+    public void setId_user(String id_user) {
+        this.id_user = id_user;
     }
 }

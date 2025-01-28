@@ -45,4 +45,13 @@ public class UserService {
         return userRepository.findUserIdByClerkId(clerkId);
 
     }
+    public List<User> getAllDrivers() {
+        return userRepository.findByIsDriverTrue();
+    }
+
+    public void rechargeSolde(User user,double recharge) {
+        user.setWalletBalance(user.getWalletBalance() + recharge);
+        userRepository.save(user);
+    }
+
 }
